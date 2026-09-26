@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#140e0a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Our Deal Runner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div style="display:flex;gap:10px;align-items:center;">
+        <div class="logo">DR</div>
+        <div class="titles">
+          <h1>Our Deal Runner</h1>
+          <p>Paste a link. Run the house. Keep the fee.</p>
+        </div>
+      </div>
+      <span class="pill" id="statePill">FL</span>
+    </div>
+  </header>
+  <main>
+    <section class="view active" id="view-run">
+      <div class="hero">
+        <h2>Drop a link.<br>Watch the deal move.</h2>
+        <p class="lede">Paste a Zillow, Redfin, Realtor, or HUD link. Drag the sliders on Numbers.</p>
+        <div class="chip-row">
+          <button class="chip on" type="button" id="chipLink">Link</button>
+          <button class="chip" type="button" id="chipAddr">Address</button>
+          <button class="chip" type="button" id="chipSample">Sample</button>
+        </div>
+        <label for="query">Listing link or address</label>
+        <textarea id="query" placeholder="https://www.zillow.com/homedetails/..."></textarea>
+        <button class="btn btn-primary" id="btnRun">Run this house</button>
+        <div class="btn-row">
+          <button class="btn btn-ghost" id="btnDemo">Play sample deal</button>
+          <button class="btn btn-ghost" id="btnImport">Import lookup</button>
+        </div>
+        <button class="btn btn-mint" id="btnLoad5612" style="margin-top:8px">Load 5612 NW 206th (last run)</button>
+        <div class="ticker"><small>Live contract on this deal</small><b id="runTicker">$0</b></div>
+        <p class="status" id="runStatus"></p>
+      </div>
+      <div class="card">
+        <h3>Import lookup card</h3>
+        <p class="tiny">After a chat lookup, paste the JSON card here.</p>
+        <textarea id="importBox" placeholder='{"address":"123 Pine St","city":"Orlando"}'></textarea>
+        <button class="btn btn-mint" id="btnApplyImport">Apply import</button>
+      </div>
+    </section>
+    <section class="view" id="view-house">
+      <div id="houseBanner"></div>
+      <div class="card listing" id="listingCard">
+        <div class="thumb">⌂</div>
+        <div>
+          <strong id="listingTitle">No house loaded</strong>
+          <p class="tiny" id="listingSub">Paste a link on Run</p>
+        </div>
+      </div>
+      <div class="kpis" id="houseKpis"></div>
+      <div class="card">
+        <h3>House facts</h3>
+        <div class="row"><div><label>Street</label><input id="f_address" /></div><div><label>City</label><input id="f_city" /></div></div>
+        <div class="row"><div><label>State</label><select id="f_state"></select></div><div><label>ZIP</label><input id="f_zip" /></div></div>
+        <label>Source / listing link</label><input id="f_source" />
+        <div class="row3"><div><label>Beds</label><input id="f_beds" inputmode="decimal" /></div><div><label>Baths</label><input id="f_baths" inputmode="decimal" /></div><div><label>Sq ft</label><input id="f_sqft" inputmode="numeric" /></div></div>
+        <div class="row"><div><label>Year</label><input id="f_year" inputmode="numeric" /></div><div><label>List / asking</label><input id="f_asking" inputmode="decimal" /></div></div>
+        <label>Condition notes</label><textarea id="f_notes" style="min-height:70px"></textarea>
+        <label>Listing realtor name</label><input id="f_agentName" />
+        <div class="row"><div><label>Realtor phone</label><input id="f_agentPhone" /></div><div><label>Realtor email</label><input id="f_agentEmail" /></div></div>
+      </div>
+    </section>
+    <section class="view" id="view-comps">
+      <div class="card">
+        <h3>Sold comps</h3>
+        <p class="lede">Use sold houses near this one.</p>
+        <div id="compList"></div>
+        <button class="btn btn-ghost" id="btnAddComp">Add a comp</button>
+        <div class="kpis" style="margin-top:12px" id="compKpis"></div>
+      </div>
+    </section>
+    <section class="view" id="view-numbers">
+      <div class="ticker"><small>Contract number</small><b id="numTicker">$0</b><div class="stack" id="dealStack"></div></div>
+      <div class="kpis" id="numKpis"></div>
+      <div class="card">
+        <h3>Drag the deal</h3>
+        <label>Buy-box <span id="lblBuybox">70%</span></label>
+        <input class="slider" id="s_buybox" type="range" min="55" max="85" step="1" />
+        <label>Target fee <span id="lblFee">$12,000</span></label>
+        <input class="slider" id="s_fee" type="range" min="3000" max="40000" step="500" />
+        <label>Repairs <span id="lblRepairs">$35,000</span></label>
+        <input class="slider" id="s_repairs" type="range" min="0" max="120000" step="1000" />
+      </div>
+      <div class="card">
+        <h3>Your inputs</h3>
+        <div class="row"><div><label>ARV override (blank = comps)</label><input id="n_arv" inputmode="decimal" /></div><div><label>Repair estimate</label><input id="n_repairs" inputmode="decimal" /></div></div>
+        <div class="row"><div><label>Add repair buffer?</label><select id="n_buffer"><option>YES</option><option>NO</option></select></div><div><label>Buy-box %</label><input id="n_buybox" inputmode="decimal" /></div></div>
+        <div class="row"><div><label>Target fee</label><input id="n_fee" inputmode="decimal" /></div><div><label>Structure</label><select id="n_structure"><option>Assignment</option><option>Double Close</option></select></div></div>
+        <div class="row"><div><label>Earnest money</label><input id="n_earnest" inputmode="decimal" /></div><div><label>Marketing cost</label><input id="n_marketing" inputmode="decimal" /></div></div>
+        <div class="row"><div><label>Actual contract (optional)</label><input id="n_contract" inputmode="decimal" /></div><div><label>Actual buyer price (optional)</label><input id="n_buyer" inputmode="decimal" /></div></div>
+      </div>
+      <div class="card" id="numBreakdown"></div>
+    </section>
+    <section class="view" id="view-people">
+      <div class="card">
+        <h3>Do this next</h3>
+        <ol class="tiny" style="padding-left:18px;line-height:1.6">
+          <li>Open the Zillow link → Contact agent.</li>
+          <li>Read the listing-agent script below.</li>
+          <li>Call Javier Sosa about park buyers.</li>
+          <li>Save any yes into this buyer book.</li>
+          <li>Only write a contract if they will look at $135k–$145k.</li>
+        </ol>
+      </div>
+      <div class="card"><h3>Listing realtor</h3><div id="realtorCard"></div></div>
+      <div class="card">
+        <h3>Script: listing agent</h3>
+        <pre id="scriptAgent" style="white-space:pre-wrap;background:#120e0b;border:1px solid #3d2d22;border-radius:14px;padding:12px;font-size:13px"></pre>
+        <button class="btn btn-mint" id="btnCopyAgent">Copy listing-agent script</button>
+      </div>
+      <div class="card">
+        <h3>Script: park buyer agent</h3>
+        <p class="tiny">Javier Sosa · 305-305-9284</p>
+        <pre id="scriptBuyer" style="white-space:pre-wrap;background:#120e0b;border:1px solid #3d2d22;border-radius:14px;padding:12px;font-size:13px"></pre>
+        <a class="btn btn-primary" href="tel:3053059284">Call Javier Sosa</a>
+        <button class="btn btn-ghost" id="btnCopyBuyer">Copy buyer-agent script</button>
+      </div>
+      <div class="card">
+        <h3>Our cash buyers</h3>
+        <div id="buyerMatches"></div>
+        <div id="buyerList"></div>
+        <button class="btn btn-ghost" id="btnAddBuyer">Add a buyer</button>
+      </div>
+    </section>
+    <section class="view" id="view-papers">
+      <div class="banner info">The site fills bracket fields. It does not send DocuSign.</div>
+      <div class="card papers"><h3>Filled fields</h3><pre id="paperFields"></pre><button class="btn btn-mint" id="btnCopyFields">Copy fields</button></div>
+    </section>
+    <section class="view" id="view-pipeline">
+      <div class="card">
+        <h3>Pipeline</h3>
+        <button class="btn btn-primary" id="btnSaveDeal">Save current house to pipeline</button>
+        <div id="pipeList" style="margin-top:12px"></div>
+      </div>
+      <div class="card">
+        <h3>Settings</h3>
+        <label>RentCast API key (optional)</label>
+        <input id="s_key" type="password" autocomplete="off" />
+        <div class="row"><div><label>Federal tax rate</label><input id="s_fed" inputmode="decimal" /></div><div><label>Use self-employment tax?</label><select id="s_se"><option>YES</option><option>NO</option></select></div></div>
+      </div>
+    </section>
+  </main>
+  <nav class="nav">
+    <button data-view="run" class="active"><span class="ico">▶</span>Run</button>
+    <button data-view="house"><span class="ico">⌂</span>House</button>
+    <button data-view="comps"><span class="ico">▣</span>Comps</button>
+    <button data-view="numbers"><span class="ico">$</span>Numbers</button>
+    <button data-view="people"><span class="ico">☺</span>People</button>
+    <button data-view="papers"><span class="ico">✉</span>Papers</button>
+    <button data-view="pipeline"><span class="ico">☰</span>List</button>
+  </nav>
+  <script src="states.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
