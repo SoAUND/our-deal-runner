@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#05070d" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>Deal Runner</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <header class="app-header">
@@ -18,14 +18,14 @@
           <p>Paste a link. Run the house. Keep the fee.</p>
         </div>
       </div>
-      <span class="pill" id="statePill" title="State for this deal">FL</span>
+      <span class="pill" id="statePill" title="State for this deal">—</span>
     </div>
   </header>
   <main>
     <section class="view active" id="view-run">
       <div class="hero">
         <h2>Drop a link.<br>Watch the deal move.</h2>
-        <p class="lede">Paste a Zillow link. If we already looked this house up, Run fills price, comps, and numbers.</p>
+        <p class="lede">Paste a Zillow link and tap Run. Known houses fill all the way. New houses fill the address from the link.</p>
         <div class="chip-row">
           <button class="chip on" type="button" id="chipLink">Link</button>
           <button class="chip" type="button" id="chipAddr">Address</button>
@@ -44,7 +44,7 @@
       </div>
       <div class="card">
         <h3>Import lookup card</h3>
-        <p class="tiny">After a chat lookup, paste the JSON card here.</p>
+        <p class="tiny">Paste a JSON card from chat, then Apply import.</p>
         <textarea id="importBox" placeholder='{"address":"123 Pine St","city":"Orlando"}'></textarea>
         <button class="btn btn-mint" id="btnApplyImport">Apply import</button>
       </div>
@@ -58,6 +58,7 @@
           <p class="tiny" id="listingSub">Paste a link on Run</p>
         </div>
       </div>
+      <button class="btn btn-mint" id="btnOpenListing">Open listing</button>
       <div class="kpis" id="houseKpis"></div>
       <div class="card">
         <h3>House facts</h3>
@@ -106,10 +107,10 @@
       <div class="card">
         <h3>Do this next</h3>
         <ol class="tiny" style="padding-left:18px;line-height:1.6">
-          <li>Open the listing link and tap Contact agent.</li>
-          <li>Read the listing-agent script below.</li>
+          <li>Tap Open listing and Contact agent.</li>
+          <li>Copy the listing-agent script.</li>
           <li>Save any buyer yes into this book.</li>
-          <li>Only write a contract if the number on Numbers works.</li>
+          <li>Only write a contract if Numbers says it works.</li>
         </ol>
       </div>
       <div class="card"><h3>Listing realtor</h3><div id="realtorCard"></div></div>
@@ -138,6 +139,7 @@
       <div class="card">
         <h3>Pipeline</h3>
         <button class="btn btn-primary" id="btnSaveDeal">Save current house to pipeline</button>
+        <p class="status" id="pipeStatus"></p>
         <div id="pipeList" style="margin-top:12px"></div>
       </div>
       <div class="card">
@@ -157,7 +159,7 @@
     <button data-view="papers"><span class="ico">✉</span>Papers</button>
     <button data-view="pipeline"><span class="ico">☰</span>List</button>
   </nav>
-  <script src="states.js"></script>
-  <script src="app.js"></script>
+  <script src="states.js?v=3"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
