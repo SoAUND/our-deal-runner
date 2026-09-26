@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#140e0a" />
+  <meta name="theme-color" content="#05070d" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>Deal Runner</title>
   <link rel="stylesheet" href="styles.css" />
@@ -25,7 +25,7 @@
     <section class="view active" id="view-run">
       <div class="hero">
         <h2>Drop a link.<br>Watch the deal move.</h2>
-        <p class="lede">Paste a Zillow, Redfin, Realtor, or HUD link. Drag the sliders on Numbers.</p>
+        <p class="lede">Paste a Zillow link. If we already looked this house up, Run fills price, comps, and numbers.</p>
         <div class="chip-row">
           <button class="chip on" type="button" id="chipLink">Link</button>
           <button class="chip" type="button" id="chipAddr">Address</button>
@@ -38,7 +38,7 @@
           <button class="btn btn-ghost" id="btnDemo">Play sample deal</button>
           <button class="btn btn-ghost" id="btnImport">Import lookup</button>
         </div>
-        <button class="btn btn-mint" id="btnLoad5612" style="margin-top:8px">Load 5612 NW 206th (last run)</button>
+        <button class="btn btn-mint" id="btnLoad5612" style="margin-top:8px">Load 1300 Bruce St</button>
         <div class="ticker"><small>Live contract on this deal</small><b id="runTicker">$0</b></div>
         <p class="status" id="runStatus"></p>
       </div>
@@ -106,11 +106,10 @@
       <div class="card">
         <h3>Do this next</h3>
         <ol class="tiny" style="padding-left:18px;line-height:1.6">
-          <li>Open the Zillow link → Contact agent.</li>
+          <li>Open the listing link and tap Contact agent.</li>
           <li>Read the listing-agent script below.</li>
-          <li>Call Javier Sosa about park buyers.</li>
-          <li>Save any yes into this buyer book.</li>
-          <li>Only write a contract if they will look at $135k–$145k.</li>
+          <li>Save any buyer yes into this book.</li>
+          <li>Only write a contract if the number on Numbers works.</li>
         </ol>
       </div>
       <div class="card"><h3>Listing realtor</h3><div id="realtorCard"></div></div>
@@ -120,11 +119,9 @@
         <button class="btn btn-mint" id="btnCopyAgent">Copy listing-agent script</button>
       </div>
       <div class="card">
-        <h3>Script: park buyer agent</h3>
-        <p class="tiny">Javier Sosa · 305-305-9284</p>
+        <h3>Script: cash buyer</h3>
         <pre id="scriptBuyer" style="white-space:pre-wrap;background:#120e0b;border:1px solid #3d2d22;border-radius:14px;padding:12px;font-size:13px"></pre>
-        <a class="btn btn-primary" href="tel:3053059284">Call Javier Sosa</a>
-        <button class="btn btn-ghost" id="btnCopyBuyer">Copy buyer-agent script</button>
+        <button class="btn btn-ghost" id="btnCopyBuyer">Copy buyer script</button>
       </div>
       <div class="card">
         <h3>Cash buyers</h3>
