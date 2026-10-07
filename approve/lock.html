@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Approve lock — All Up No Down</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="lock">
+  <header class="wrap top">
+    <a class="brand" href="index.html">
+      <small>All Up No Down</small>
+      <strong>Approve</strong>
+    </a>
+    <a class="btn ghost" href="index.html#seat">Seat</a>
+  </header>
+  <main class="wrap">
+    <div class="lockbar">
+      <strong id="lock-label">Export locked</strong>
+      <span class="pill locked" id="lock-pill">LOCKED</span>
+    </div>
+    <section class="card">
+      <span>Brand kit</span>
+      <h2>Their real photos stay here.</h2>
+      <p>Generation uses these, not random faces. On iPhone: Photos → Select → these files. These never auto-export.</p>
+      <label for="kit-shop">Shop</label>
+      <input id="kit-shop" placeholder="Shop name">
+      <label for="kit-ban">Banned words</label>
+      <input id="kit-ban" placeholder="guaranteed, cheapest, miracle">
+      <label for="kit-files">Source photos</label>
+      <input id="kit-files" type="file" accept="image/*" multiple>
+      <div class="shots" id="kit-shots"></div>
+      <div class="row" style="margin-top:12px">
+        <button class="btn" id="save-kit" type="button">Save kit</button>
+      </div>
+    </section>
+    <section class="card">
+      <span>Ask</span>
+      <h2>One sentence.</h2>
+      <label for="brief">Brief</label>
+      <textarea id="brief" placeholder="Three Instagram squares for this facial."></textarea>
+      <div class="row">
+        <button class="btn" id="copy-prompt" type="button">Copy prompt</button>
+      </div>
+      <p class="fine">The lock is the product. Generation stays off this page until export is approved. Generate elsewhere, then upload the options below.</p>
+    </section>
+    <section class="card">
+      <span>Review grid</span>
+      <h2>Keep or kill.</h2>
+      <p>Upload the new options. Nothing downloads from here.</p>
+      <label for="review-files">Options</label>
+      <input id="review-files" type="file" accept="image/*" multiple>
+      <div class="grid-review" id="review"></div>
+    </section>
+    <section class="card">
+      <span>Approve and export</span>
+      <h2>Download stays off until you tap Approve.</h2>
+      <p id="export-note">Export is locked. Keep at least one image, then approve.</p>
+      <div class="row">
+        <button class="btn" id="approve" type="button">Approve kept images</button>
+        <button class="btn ghost" id="download" type="button" disabled>Download approved</button>
+        <button class="btn ghost" id="revoke" type="button">Revoke / lock again</button>
+      </div>
+      <p class="fine">Paid 30-day seat: Cash App $aundso — $500. Note: Approve — 30 days — shop name. <a href="https://cash.app/$aundso/500">Pay $500</a></p>
+    </section>
+    <section class="card">
+      <span>Log</span>
+      <div class="log" id="log">Ready.</div>
+    </section>
+  </main>
+  <footer class="wrap">
+    <p>SO GUCCI ENT LLC · Approve · photos stay on this device until you approve an export.</p>
+  </footer>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Approve — All Up No Down</title>
+  <meta name="description" content="Your photos stay yours. Ads do not export until you tap Approve. $500 for 30 days after a 14-day pilot.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="wrap top">
+    <a class="brand" href="index.html">
+      <small>All Up No Down</small>
+      <strong>Approve</strong>
+    </a>
+    <nav class="nav">
+      <a class="btn ghost" href="lock.html">Open lock</a>
+    </nav>
+  </header>
+  <main class="wrap">
+    <section class="hero">
+      <p class="kicker">Pilot · photo shops</p>
+      <h1>You already have the photos. We make the ads.</h1>
+      <p class="lede">Nothing leaves the folder until you tap Approve. Med spas, home services, boutiques, catalogs. Any city. The seat is not limited to Orlando.</p>
+      <div class="row">
+        <a class="btn" href="lock.html">Try the lock</a>
+        <a class="btn cash" href="https://cash.app/$aundso/500">Pay $500 seat</a>
+      </div>
+    </section>
+    <section class="grid">
+      <article class="card">
+        <span>01 · Kit</span>
+        <h2>Your photos stay yours.</h2>
+        <p>Logo, source shots, banned words. Generation uses what you already shot — not a random face.</p>
+      </article>
+      <article class="card">
+        <span>02 · Ask</span>
+        <h2>One sentence.</h2>
+        <p>“Three Instagram squares for this facial.” That is the brief. Copy it, attach one source photo, generate two options.</p>
+      </article>
+      <article class="card">
+        <span>03 · Review</span>
+        <h2>Keep or kill.</h2>
+        <p>A grid. Reject, regenerate, keep. Staff does not get a private download.</p>
+      </article>
+      <article class="card">
+        <span>04 · Lock</span>
+        <h2>Then — and only then — export.</h2>
+        <p>The lock is the product. Download stays off until the owner taps Approve.</p>
+      </article>
+    </section>
+    <section class="price" id="seat">
+      <div>
+        <p class="kicker">Seat</p>
+        <h2>14 days on your real photos. Then $500 for 30 days.</h2>
+        <p>Same seat anywhere. Starts when the payment shows. In the Cash App note write: Approve — 30 days — your shop name.</p>
+      </div>
+      <div class="row">
+        <a class="btn cash" href="https://cash.app/$aundso/500">Pay $500 in Cash App</a>
+        <a class="btn ghost" style="border-color:#f4efe6;color:#f4efe6" href="https://cash.app/$aundso">Open $aundso</a>
+      </div>
+    </section>
+    <section class="card" id="pilot">
+      <span>Pilot request</span>
+      <h2>Send the shop name. We start on your photos.</h2>
+      <form id="pilot-form">
+        <label for="shop">Shop name</label>
+        <input id="shop" name="shop" required placeholder="Shop name">
+        <label for="contact">Your name, city, and phone</label>
+        <input id="contact" name="contact" required placeholder="Alex · city · phone">
+        <label for="note">What you shoot</label>
+        <textarea id="note" name="note" placeholder="Facials, before/after, Instagram squares."></textarea>
+        <div class="row" style="margin-top:14px">
+          <button class="btn" type="submit">Copy pilot request</button>
+          <a class="btn ghost" href="lock.html">Open the lock</a>
+        </div>
+      </form>
+      <p class="fine" id="pilot-status">Request stays on this phone until you paste it into Cash App or a text.</p>
+    </section>
+  </main>
+  <footer class="wrap">
+    <p>Approve is a product of SO GUCCI ENT LLC, Florida. Sold anywhere. Invoices in the LLC name. This page does not custody funds. Payment is Cash App to $aundso.</p>
+  </footer>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
