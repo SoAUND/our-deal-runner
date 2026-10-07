@@ -187,8 +187,58 @@ textarea { min-height: 88px; resize: vertical; }
   padding: 12px 14px;
   display: none;
 }
+
+.examples { margin: 8px 0 36px; }
+.examples h2 {
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(28px, 6vw, 44px);
+  line-height: 0.98;
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+}
+.frames {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 2px 12px;
+  margin: 16px 0 28px;
+}
+.frames figure {
+  flex: 0 0 min(78vw, 280px);
+  scroll-snap-align: start;
+  margin: 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.frames img {
+  width: 100%;
+  aspect-ratio: 480 / 713;
+  object-fit: cover;
+  background: #efe8dc;
+}
+.frames figcaption {
+  padding: 12px 14px 14px;
+  font-size: 14px;
+  color: #3c372f;
+}
+.frames figcaption strong {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 4px;
+}
+
 @media (min-width: 800px) {
   .grid { grid-template-columns: 1fr 1fr; }
   .price { grid-template-columns: 1.4fr 0.8fr; align-items: end; }
   .shots, .grid-review { grid-template-columns: repeat(4, 1fr); }
+  .frames { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; }
+  .frames figure { flex: none; }
 }
